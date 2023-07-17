@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 100px auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            /* text-align: center; */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="password"]:hover {
+            border-color: #21dab5;
+        }
+
+        input[type="submit"] {
+            background-color: #21dab5;
+            color: rgba(0, 0, 0, 0.911);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1ca082;
+        }
+
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: rgb(255, 0, 0);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Background image */
+        body {
+            background-image: url("bg_reg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            resize: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Registration</h1>
+        {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <input type="submit" value="Register">
+            <a class="register-link" href="{{ url_for('login') }}">Login</a>
+        </form>
+    </div>
+</body>
+</html>
