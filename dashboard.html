@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Type Prediction Dashboard</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f2f2f2, #d6e6f2);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Type Prediction</h1>
+        <form method="POST" action="{{ url_for('dashboard') }}">
+            <label for="gender">Gender:</label>
+            <input type="text" name="gender" placeholder="Enter 1 For Male 0 for Female" required><br>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" placeholder="Enter Age" required><br>
+
+            <label for="hypertension">Hypertension:</label>
+            <input type="number" name="hypertension" placeholder="Enter 0 for NO & 1 for YES" required><br>
+
+            <label for="heart_disease">Heart Disease:</label>
+            <input type="number" name="heart_disease" placeholder="Enter 0 for NO & 1 for YES" required><br>
+
+            <label for="smoking_history">Smoking History:</label>
+            <input type="text" name="smoking_history" placeholder="Enter 0 for NO INFO, 1 for Currently Smoking, 2 for Ever, 3 For Former Smoker and 4 for Never" required><br>
+
+            <label for="bmi">BMI:</label>
+            <input type="number" name="bmi" placeholder="Enter BMI" required><br>
+
+            <label for="HbA1c_level">HbA1c Level:</label>
+            <input type="number" name="HbA1c_level" placeholder="Enter HbA1c level" required><br>
+
+            <label for="blood_glucose_level">Blood Glucose Level:</label>
+            <input type="number" name="blood_glucose_level" placeholder="Enter blood glucose level" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+        <p>Prediction Result:</p>
+        <p>Diabetes Type: {{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
